@@ -18,6 +18,7 @@ Running aria2 and ariang with root module manager (Magisk/KernelSU/APatch)
  3. How do I use a custom address? --- You need to sign the domain name after pointing it to a local address, see [this](https://blog.csdn.net/xiejianweifdd/article/details/132520188) and [ this](https://www.gworg.com/ssl/832.html)
  
  4. Can't connect to aria2? ---
+ 
    -a.Please check if the certificate signature is expired
  
    -b.Please check the logs (located in the module directory)
