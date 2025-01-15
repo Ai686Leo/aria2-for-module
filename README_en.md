@@ -17,7 +17,13 @@ Running aria2 and ariang with root module manager (Magisk/KernelSU/APatch)
 
  3. How do I use a custom address? --- You need to sign the domain name after pointing it to a local address, see [this](https://blog.csdn.net/xiejianweifdd/article/details/132520188) and [ this](https://www.gworg.com/ssl/832.html)
  
- 4. Can't connect to aria2? --- Please check if the certificate signature is expired, please check the logs (located in the module directory), please check if the aria2 configuration file is correct, please check if the certificate is correct, please check if the system's certificate system is different from that of Android 15 and below (15 and above may not be an error either)
+ 4. Can't connect to aria2? ---
+   -a.Please check if the certificate signature is expired
+   -b.Please check the logs (located in the module directory)
+   -c.Please check if the aria2 configuration file is correct
+   -d Please check if the certificate is correct
+   -e.Please check if the system's certificate system is different from that of Android 15 and below (15 and above may not be an error either)
+   -f.If the module manager does not connect, check that the RPC address is correct and that the proxy is turned off (not the settings in the Web UI).
 
 # Project dependencies
 The project contains [**aria2**](https://github.com/aria2/aria2), [**AriaNG**](https://github.com/mayswind/AriaNg)
