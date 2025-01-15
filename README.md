@@ -17,7 +17,7 @@
 
 3.如何使用自定义地址？——— 你需要将域名指向本地地址后进行签名，可参考[这个](https://blog.csdn.net/xiejianweifdd/article/details/132520188)和[这个](https://www.gworg.com/ssl/832.html)
  
-4.无法连接到aria2？——— 请检查证书签名是否过期，请检查日志（位于模块目录），请检查aria2配置文件是否正确，请检查证书是否正确，请检查系统的证书系统是否与Android15及以下不同（以上可能也不会坏）
+4.无法连接到aria2？——— 请检查证书签名是否过期，请检查日志（位于模块目录），请检查aria2配置文件是否正确，请检查证书是否正确，请检查系统的证书系统是否与Android15及以下不同（15以上可能也不会坏）
 
 # 项目依赖
 该项目包含[**aria2**](https://github.com/aria2/aria2)、[**AriaNG**](https://github.com/mayswind/AriaNg)
