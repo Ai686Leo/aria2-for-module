@@ -25,6 +25,7 @@ The project contains [**aria2**](https://github.com/aria2/aria2), [**AriaNG**](h
 The files for these two items in the module are copyrighted by the original authors
 
 ———————————
+ 
 由中文版使用deepl翻译而来，可能意思有误
 
 Translated from the Chinese version using deepl, the meaning may be wrong
