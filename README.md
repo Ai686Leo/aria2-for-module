@@ -29,7 +29,7 @@
  
    -e请检查系统的证书系统是否与Android15及以下不同（15以上可能也不会出错）
  
-   -f在模块管理器连不上时，请检查RPC地址是否正确，以及是否开启了代理
+   -f在模块管理器连不上时，请检查RPC地址是否正确，以及是否关闭了代理（不是指Web UI里的设置项）
 
 # 项目依赖
 该项目包含[**aria2**](https://github.com/aria2/aria2)、[**AriaNG**](https://github.com/mayswind/AriaNg)
