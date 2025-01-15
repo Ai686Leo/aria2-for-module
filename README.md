@@ -1,7 +1,7 @@
 **🇨🇳中文** | [🇬🇧English](README_en.md)
 
 # aria2-for-module
-用root模块管理器（Magisk/KernelSU/APatch）运行aria2和ariang
+使用root模块管理器（Magisk/KernelSU/APatch）运行aria2和ariang
 
 # 必要和可选的配置
 1.**在安装完模块后，你需要在Web UI中将Aria2 RPC地址设置为 aria2-127-0-0-1.nip.io**，若不想使用此地址请查看下文
