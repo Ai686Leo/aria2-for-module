@@ -5,6 +5,7 @@ CONF_DIR="${0%/*}/conf"
 
 if [ ! -d "$LOG_DIR" ]; then
     mkdir -p "$LOG_DIR"
+    echo "日志文件夹已创建：$LOG_DIR"
 fi
 
 if [ ! -d "$CONF_DIR" ]; then
@@ -40,7 +41,7 @@ rpc-secure=true
 rpc-private-key=${0%/*}/cert/aria2.key
 rpc-certificate=${0%/*}/cert/aria2.crt
 EOF
-  echo "aria2配置文件不存在，已创建默认配置文件"
+    echo "aria2配置文件不存在，已创建默认配置文件"
 fi
 
 # 启动 Aria2 服务
