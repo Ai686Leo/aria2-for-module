@@ -6,6 +6,7 @@ CONF_DIR="${0%/*}/conf"
 if [ ! -d "$LOG_DIR" ]; then
     mkdir -p "$LOG_DIR"
 fi
+
 if [ ! -d "$CONF_DIR" ]; then
     mkdir -p "$CONF_DIR"
     echo "配置文件夹已创建：$CONF_DIR"
