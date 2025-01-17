@@ -5,6 +5,13 @@ CERT="${0%/*}/system/etc/security/cacerts"
 APEX="/apex/com.android.conscrypt/cacerts"
 ANDROID_VERSION=$(getprop ro.build.version.sdk)
 
+# 创建log文件夹
+LOG_DIR="${0%/*}/log"
+
+if [ ! -d "$LOG_DIR" ]; then
+    mkdir -p "$LOG_DIR"
+fi
+
 # log 路径
 LOG="${0%/*}/log/post-fs-data.log"
 
