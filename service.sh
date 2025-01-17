@@ -1,6 +1,17 @@
 #!/system/bin/sh
+# 创建log和conf文件夹
+LOG_DIR="${0%/*}/log"
+CONF_DIR="${0%/*}/conf"
 
-# 配置 Aria2 服务
+if [ ! -d "$LOG_DIR" ]; then
+    mkdir -p "$LOG_DIR"
+fi
+if [ ! -d "$CONF_DIR" ]; then
+    mkdir -p "$CONF_DIR"
+    echo "配置文件夹已创建：$CONF_DIR"
+fi
+
+# Aria2配置文件
 CONF="${0%/*}/conf/aria2.conf"
 
 # log 路径
@@ -12,7 +23,7 @@ LOG="${0%/*}/log/service.log"
 # 开始记录日志
 exec > "$LOG" 2>&1
 
-# 输出调试信息到日志文件和终端
+# 输出调试信息到日志文件
 echo "正在启动 service.sh 脚本..."
 
 # 创建默认配置文件（如果不存在）
