@@ -31,7 +31,7 @@ Running aria2 and ariang with root module manager (Magisk/KernelSU/APatch)
  
    -f.If the module manager does not connect, check that the RPC address is correct and that the proxy is turned off (not the settings in the Web UI).
 
-5.Where is the Web UI? Where is the activation? --- It's in the module manager. If you can't find it, maybe your module manager is missing the relevant function? Normally it should be as shown in the picture. If the manager doesn't support it, you can use an app that specializes in opening the Web UI (browsers may not be able to use that Web UI, even if it's packaged, that's why I've written them as modules)
+ 5.Where is the Web UI? Where is the activation? --- It's in the module manager. If you can't find it, maybe your module manager is missing the relevant function? Normally it should be as shown in the picture. If the manager doesn't support it, you can use an app that specializes in opening the Web UI (browsers may not be able to use that Web UI, even if it's packaged, that's why I've written them as modules)
     ![screencast](jpg/en.jpg)
 
 # Project dependencies
