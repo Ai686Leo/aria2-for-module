@@ -4,34 +4,34 @@
 Running aria2 and ariang with root module manager (Magisk/KernelSU/APatch)
 
 # Required and optional configurations
-1. **After installing the module, you need to set the Aria2 RPC address to aria2-127-0-0-1.nip.io in the Web UI**, if you don't want to use this address please check the following
+1.**After installing the module, you need to set the Aria2 RPC address to aria2-127-0-0-1.nip.io in the Web UI**, if you don't want to use this address please check the following
  
-2. The module generates a default aria2 configuration, which you can replace
+2.The module generates a default aria2 configuration, which you can replace
  
-3. The module contains a self-signed root certificate and a set of self-signed certificates and keys for aria2 to open HTTPS, if you feel insecure, you can replace them
+3.The module contains a self-signed root certificate and a set of self-signed certificates and keys for aria2 to open HTTPS, if you feel insecure, you can replace them
 
 # FAQs
-1. What is 1.aria2-127-0-0-1.nip.io? --- This domain is provided by [nip.io](nip.io), you can go to that site to see what it is
+1.What is 1.aria2-127-0-0-1.nip.io? --- This domain is provided by [nip.io](nip.io), you can go to that site to see what it is
  
-2. Why is aria2-127-0-0-1.nip.io? --- Module Manager opens the Web UI using HTTPS by default, and Module Manager doesn't seem to be able to use addresses like 127.0.0.1 and localhost. I'm not looking for a solution at this stage, but if you want to use a local address, you can build your own server and use localhost (your certificate is signed for localhost).
+2.Why is aria2-127-0-0-1.nip.io? --- Module Manager opens the Web UI using HTTPS by default, and Module Manager doesn't seem to be able to use addresses like 127.0.0.1 and localhost. I'm not looking for a solution at this stage, but if you want to use a local address, you can build your own server and use localhost (your certificate is signed for localhost).
 
-3. How do I use a custom address? --- You need to sign the domain name after pointing it to a local address, see [this](https://blog.csdn.net/xiejianweifdd/article/details/132520188) and [ this](https://www.gworg.com/ssl/832.html)
+3.How do I use a custom address? --- You need to sign the domain name after pointing it to a local address, see [this](https://blog.csdn.net/xiejianweifdd/article/details/132520188) and [ this](https://www.gworg.com/ssl/832.html)
  
-4. Can't connect to aria2? ---
+4.Can't connect to aria2? ---
  
-  -a.Please check if the certificate signature is expired
+  -a. Please check if the certificate signature is expired
  
-  -b.Please check the logs (located in the module directory)
+  -b. Please check the logs (located in the module directory)
  
-  -c.Please check if the aria2 configuration file is correct
+  -c. Please check if the aria2 configuration file is correct
  
-  -d Please check if the certificate is correct
+  -d. Please check if the certificate is correct
  
-  -e.Please check if the system's certificate system is different from that of Android 15 and below (15 and above may not be an error either)
+  -e. Please check if the system's certificate system is different from that of Android 15 and below (15 and above may not be an error either)
  
-  -f.If the module manager does not connect, check that the RPC address is correct and that the proxy is turned off (not the settings in the Web UI).
+  -f. If the module manager does not connect, check that the RPC address is correct and that the proxy is turned off (not the settings in the Web UI).
  
-5. Where is the Web UI? Where is the activation? --- It's in the module manager. If you can't find it, maybe your module manager is missing the relevant function? Normally it should be as shown in the picture. If the manager doesn't support it, you can use an app that specializes in opening the Web UI (browsers may not be able to use that Web UI, even if it's packaged, that's why I've written them as modules)
+5.Where is the Web UI? Where is the activation? --- It's in the module manager. If you can't find it, maybe your module manager is missing the relevant function? Normally it should be as shown in the picture. If the manager doesn't support it, you can use an app that specializes in opening the Web UI (browsers may not be able to use that Web UI, even if it's packaged, that's why I've written them as modules)
     ![screencast](jpg/en.jpg)
 
 # Project dependencies
