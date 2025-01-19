@@ -32,8 +32,7 @@
    -f在模块管理器连不上时，请检查RPC地址是否正确，以及是否关闭了代理（不是指Web UI里的设置项）
 
    -g Web UI在哪里？激活在哪里？——— 可能是你的模块管理器缺少相关功能？正常的话应该是图示的样子。Web UI可以用专门打开Web UI的应用（浏览器可能用不了该Web UI，即使是打包好的，这也是为什么我把它们写成了模块）
-  ![截屏](https://github.com/user-attachments/assets/e955f99e-7fe9-4deb-872d-4cfbe836f8d7)
-
+  ![截屏](jpg/cn.jpg)
 
 # 项目依赖
 该项目包含[**aria2**](https://github.com/aria2/aria2)、[**AriaNG(Web UI)**](https://github.com/mayswind/AriaNg)
