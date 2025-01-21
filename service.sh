@@ -40,6 +40,7 @@ rpc-listen-port=6800
 rpc-secure=true
 rpc-private-key=${0%/*}/cert/aria2.key
 rpc-certificate=${0%/*}/cert/aria2.crt
+check-certificate=false
 EOF
     echo "aria2配置文件不存在，已创建默认配置文件"
 fi
