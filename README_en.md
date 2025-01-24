@@ -9,6 +9,8 @@ Running aria2 and ariang with root module manager (Magisk/KernelSU/APatch)
 2.The module generates a default aria2 configuration, which you can replace
  
 3.The module contains a self-signed root certificate and a set of self-signed certificates and keys for aria2 to open HTTPS, if you feel insecure, you can replace them
+ 
+4.The default RPC key is 123456, you can change it in the configuration file.
 
 # FAQs
 1.What is 1.aria2-127-0-0-1.nip.io? --- This domain is provided by [nip.io](nip.io), you can go to that site to see what it is
