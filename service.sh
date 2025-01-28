@@ -28,6 +28,10 @@ exec > "$LOG" 2>&1
 # 输出调试信息到日志文件
 echo "正在启动 service.sh 脚本..."
 
+# 汇总根证书
+cat /system/etc/security/cacerts/*.0 > $CONF_DIR/ca-certificates.crt
+echo "已将根证书汇总到 $CONF_DIR/ca-certificates.crt"
+
 # 创建默认配置文件（如果不存在）
 if [ ! -f "$CONF" ]; then
   cat > "$CONF" <<EOF
@@ -40,7 +44,8 @@ rpc-listen-port=6800
 rpc-secure=true
 rpc-private-key=${0%/*}/cert/aria2.key
 rpc-certificate=${0%/*}/cert/aria2.crt
-check-certificate=false
+check-certificate=true
+ca-certificate=$CONF_DIR/ca-certificates.crt
 EOF
     echo "aria2配置文件不存在，已创建默认配置文件"
 fi

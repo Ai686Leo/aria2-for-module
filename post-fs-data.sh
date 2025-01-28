@@ -28,7 +28,7 @@ echo "正在启动 post-fs-data.sh 脚本..."
 if [ "$ANDROID_VERSION" -ge 34 ]; then
     echo "正在检查证书文件..."
 
-    # 遍历目录，查找以 .0 结尾的文件
+    # 找证书
     for cert_file in "$CERT"/*.0; do
         if [ -f "$cert_file" ]; then
             echo "找到证书文件：$cert_file"
