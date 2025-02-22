@@ -15,7 +15,7 @@ Running aria2 and ariang with root module manager (Magisk/KernelSU/APatch)
 # FAQs
 1.What is 1.aria2-127-0-0-1.nip.io? --- This domain is provided by [nip.io](nip.io), you can go to that site to see what it is
  
-2.Why is aria2-127-0-0-1.nip.io? --- Module Manager opens the Web UI using HTTPS by default, and Module Manager doesn't seem to be able to use addresses like 127.0.0.1 and localhost. I'm not looking for a solution at this stage, but if you want to use a local address, you can build your own server and use localhost (your certificate is signed for localhost).
+2.Why is aria2-127-0-0-1.nip.io? --- Module Manager opens the Web UI using HTTPS by default, and Module Manager doesn't seem to be able to use addresses like 127.0.0.1 and localhost. I'm not looking for a solution at this stage, but if you want to use a local address, you can build your own server (Client browsers may also need to add certificates to user certificates and to the browser's own certificates) and use localhost (your certificate is signed for localhost).
 
 3.How do I use a custom address? --- You need to sign the domain name after pointing it to a local address, see [this](https://blog.csdn.net/xiejianweifdd/article/details/132520188) and [ this](https://www.gworg.com/ssl/832.html)
  
