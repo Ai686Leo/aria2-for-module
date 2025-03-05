@@ -26,7 +26,7 @@ exec > "$LOG_FILE" 2>&1
 echo "脚本开始运行"
 
 set_context /system/etc/security/cacerts ${0%/*}/system/etc/security/cacerts
-echo "→处理system证书目录的SELinux上下文"
+echo "→处理system证书目录上下文"
 
 # Android 14+ 处理 APEX
 if [ "$ANDROID_SDK" -lt 34 ]; then
