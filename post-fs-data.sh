@@ -3,6 +3,20 @@
 CERT_DIR="${0%/*}/system/etc/security/cacerts"
 LOG_FILE="${0%/*}/log/post-mount.log"
 ANDROID_SDK=$(getprop ro.build.version.sdk)
+set_context() {
+    # 仅在 SELinux 强制模式下操作
+    [ "$(getenforce)" = "Enforcing" ] || return 0
+    # 默认上下文
+    default_selinux_context=u:object_r:system_file:s0
+    selinux_context=$(ls -Zd $1 | awk '{print $1}')
+    # 检查上下文有效性
+    if [ -n "$selinux_context" ] && [ "$selinux_context" != "?" ]; then
+        chcon -R $selinux_context $2
+    else
+        # 回退到默认上下文
+        chcon -R $default_selinux_context $2
+    fi
+}
 
 # 初始化日志
 mkdir -p "${0%/*}/log"
@@ -10,6 +24,9 @@ mkdir -p "${0%/*}/log"
 exec > "$LOG_FILE" 2>&1
 
 echo "脚本开始运行"
+
+set_context /system/etc/security/cacerts ${0%/*}/system/etc/security/cacerts
+echo "→处理system证书目录的SELinux上下文"
 
 # Android 14+ 处理 APEX
 if [ "$ANDROID_SDK" -lt 34 ]; then
@@ -62,6 +79,7 @@ for APEX_CACERTS_DIR in $APEX_CACERTS_DIRS; do
                 cp -f  "$CERT_FILE" "$CERT_CACHE"
                     chmod 644 "$CERT_CACHE"/*.0
                     chown 1000:1000 "$CERT_CACHE"/*.0
+                    set_context "$APEX_CACERTS_DIR" "$CERT_CACHE"
                 mount --bind "$CERT_CACHE" "$APEX_CACERTS_DIR"
             fi
         done
