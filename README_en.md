@@ -8,7 +8,7 @@ Running aria2 and ariang with root module manager (Magisk/KernelSU/APatch)
  
 2.The module generates a default aria2 configuration, which you can replace
  
-3.The module contains a self-signed root certificate and a set of self-signed certificates and keys for aria2 to open HTTPS, if you feel insecure, you can replace them
+"3. The module contains a self-signed root certificate and a self-signed certificate and key for aria2 to enable HTTPS, you can replace them if you feel insecure"
  
 4.The default RPC key is 123456, you can change it in the configuration file.
 
