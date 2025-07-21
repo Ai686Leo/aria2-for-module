@@ -341,10 +341,12 @@ checksum.failed=La validación de la suma de comprobación falló.
 
 [languages]
 Czech=Checo
+German=Alemán
 English=Inglés
 Spanish=Español
 French=Francés
 Italian=Italiano
+Polish=Polaco
 Russian=Ruso
 Simplified Chinese=Chino Simplificado
 Traditional Chinese=Chino Tradicional
