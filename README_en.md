@@ -12,6 +12,8 @@ Running aria2 and ariang with root module manager (Magisk/KernelSU/APatch)
  
 4.The default RPC key is 123456, you can change it in the configuration file.
 
+5.Aria2 can be configured to not start automatically at boot. This requires adding a file named noaria2 in this module's directory.
+
 # FAQs
 1.What is 1.aria2-127-0-0-1.nip.io? --- This domain is provided by [nip.io](nip.io), you can go to that site to see what it is
  
