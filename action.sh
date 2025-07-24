@@ -57,7 +57,7 @@ else
   rpc-certificate=${0%/*}/cert/aria2.crt
   check-certificate=true
   ca-certificate=$CONF_DIR/ca-certificates.crt
-  EOF
+EOF
       echo "aria2配置文件不存在，已创建默认配置文件"
   fi
 
