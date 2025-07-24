@@ -12,25 +12,26 @@ fi
 # log 路径
 LOG="${0%/*}/log/action.log"
 
-# 清除旧日志
-: > "$LOG"
-
-# 开始记录日志
-exec > "$LOG" 2>&1
-
-# 输出调试信息到日志文件
-echo "正在启动 action.sh 脚本..."
-
 # 检查 aria2c 进程是否存在并处理  
-if pgrep aria2c > /dev/null 2>&1; then  
-  echo "Aria2c正在运行，正在杀死进程……"  
+if pgrep aria2c > /dev/null 2>&1; then 
+  echo "Aria2c正在运行，正在杀死进程，请到日志查看详情"  
+  # 清除旧日志
+  : > "$LOG"
+  # 开始记录日志
+  exec > "$LOG" 2>&1
     # 如果进程存在，使用 pkill 终止  
     pkill aria2c 
   sleep 0.7
   echo "已杀死进程"  
 else  
   # 启动aia2c
-  echo "正在启动Aria2c"
+  echo "正在启动Aria2c，请到日志查看详情"
+  
+  # 清除旧日志
+  : > "$LOG"
+  # 开始记录日志
+  exec > "$LOG" 2>&1
+  
   if [ ! -d "$CONF_DIR" ]; then
       mkdir -p "$CONF_DIR"
       echo "配置文件夹已创建：$CONF_DIR" 
@@ -65,3 +66,6 @@ EOF
   aria2c --conf-path="$CONF"  &
 
 fi
+
+sleep 2 
+
