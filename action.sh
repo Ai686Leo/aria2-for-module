@@ -30,6 +30,7 @@ if pgrep aria2c > /dev/null 2>&1; then
   echo "已杀死进程"  
 else  
   # 启动aia2c
+  echo "正在启动Aria2c"
   if [ ! -d "$CONF_DIR" ]; then
       mkdir -p "$CONF_DIR"
       echo "配置文件夹已创建：$CONF_DIR" 
