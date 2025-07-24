@@ -64,7 +64,4 @@ EOF
   # 启动 Aria2 服务
   aria2c --conf-path="$CONF"  &
 
-fi  
-
-echo "将在两秒后退出"
-sleep 2 
+fi
