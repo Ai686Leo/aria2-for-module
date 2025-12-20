@@ -13,8 +13,6 @@ volume_key_selector() {
     echo "- [音量+]：设置Aria2开机不自启"
     echo "- [音量-] 或 [不操作]：设置Aria2开机自启动"
     echo "- 请选择..."
-    # 清空可能的输入缓冲区
-    getevent -c 1 >/dev/null 2>&1
 
     while [ $(( $(date +%s) - start_time )) -lt $timeout ]; do
         # 通过 getevent 监听按键，并识别具体按键
@@ -59,3 +57,4 @@ else
     echo "已设置Aria2开机不自启" > "$FILE"
     echo "模块安装已完成"
 fi
+
