@@ -29,22 +29,16 @@ volume_key_selector() {
 }
 
 # =============================================
-# 定义标记文件路径
-FILE="/data/adb/modules/aria2-Android/noaria2"
-
-# 确保父目录存在（防止报错）
-mkdir -p "$(dirname "$FILE")"
-
 # 调用函数
 if volume_key_selector; then
     ui_print "- 检测到 [音量-] 或超时"
     ui_print "- 正在设置：Aria2 开机自启动"
-    rm -f "$FILE"
+    rm -f /data/adb/modules/aria2-Android/noaria2
 else
     # 函数返回 1 (Vol+) -> 进入 else -> 禁用自启
     ui_print "- 检测到 [音量+]"
     ui_print "- 正在设置：Aria2 开机不自启"
-    > "$FILE"
+    > ${0%/*}/noaria2
 fi
 
 ui_print "- 模块配置已完成"
