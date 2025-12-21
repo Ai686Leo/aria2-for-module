@@ -1,52 +1,84 @@
 **🇬🇧English** | [🇨🇳中文](README.md) 
 
-# aria2-for-module
-Running aria2 and ariang with root module manager (Magisk/KernelSU/APatch)
+# Aria2 for Android Module
 
-# Required and optional configurations
-1.**After installing the module, you need to set the Aria2 RPC address to aria2-127-0-0-1.nip.io in the Web UI**, if you don't want to use this address please check the following
- 
-2.The module generates a default aria2 configuration, which you can replace
- 
-3.The module contains a self-signed root certificate and a self-signed certificate and key for aria2 to enable HTTPS, you can replace them if you feel insecure"
- 
-4.The default RPC key is 123456, you can change it in the configuration file.
+Run the aria2 download service and AriaNg Web UI on Android devices using module managers such as Magisk/KernelSU/APatch.
 
-5.Aria2 can be configured to not start automatically at boot. This requires adding a file named noaria2 in this module's directory.
+## 📋 Essential Post-Installation Configuration
 
-# FAQs
-1.What is 1.aria2-127-0-0-1.nip.io? --- This domain is provided by [nip.io](nip.io), you can go to that site to see what it is
- 
-2.Why is aria2-127-0-0-1.nip.io? --- Module Manager opens the Web UI using HTTPS by default, and Module Manager doesn't seem to be able to use addresses like 127.0.0.1 and localhost. I'm not looking for a solution at this stage, but if you want to use a local address, you can build your own server (Client browsers may also need to add certificates to user certificates and to the browser's own certificates) and use localhost (your certificate is signed for localhost).
+1. **RPC Address Configuration**
+   
+   - Within the AriaNg Web UI, set the Aria2 RPC address to: `aria2-127-0-0-1.nip.io`
+   - For custom address usage, refer to the instructions below
+2. **Configuration File**
+   
+   - The module includes a default aria2 configuration file
+   - You may replace the configuration file located in the `/data/adb/modules/aria2-Android/` directory as required
+3. **Security Certificates**
+   
+   - The module provides a self-signed root certificate and HTTPS certificate
+   - For enhanced security, you may replace the certificate files yourself
+   - Certificate location: The `certs/` folder within the module's installation directory
+4. **RPC Key**
+   
+   - Default key: `123456`
+   - Can be modified in the configuration file
+5. **Autostart Control**
+   
+   - To disable autostart, create an empty file named `noaria2` in the module directory
+   - Alternatively, select this option using the volume keys during module installation
 
-3.How do I use a custom address? --- You need to sign the domain name after pointing it to a local address, see [this](https://blog.csdn.net/xiejianweifdd/article/details/132520188) and [ this](https://www.gworg.com/ssl/832.html)
- 
-4.Can't connect to aria2? ---
- 
-  -a. Please check if the certificate signature is expired
- 
-  -b. Please check the logs (located in the module directory)
- 
-  -c. Please check if the aria2 configuration file is correct
- 
-  -d. Please check if the certificate is correct
- 
-  -e. Please check if the system's certificate system is different from that of Android 15 and below (15 and above may not be an error either)
- 
-  -f. If the module manager does not connect, check that the RPC address is correct and that the proxy is turned off (not the settings in the Web UI).
- 
-  -g. Please check if there are other certificate modules and also Android version ≥14, there may be conflicts
- 
-5.Where is the Web UI? Where is the activation? --- It's in the module manager. If you can't find it, maybe your module manager is missing the relevant function? Normally it should be as shown in the picture. If the manager doesn't support it, you can use an app that specializes in opening the Web UI (Browsers on your phone may not be able to use that Web UI, even if it's packaged, that's why I've written them as modules)
-    ![screencast](jpg/en.jpg)
+## ❓ Frequently Asked Questions
 
-# Project dependencies
-The project contains [**aria2**](https://github.com/aria2/aria2), [**AriaNG(Web UI)**](https://github.com/mayswind/AriaNg)
+### Q1: What is `aria2-127-0-0-1.nip.io`?
 
-The files for these two items in the module are copyrighted by the original authors
+A: This is a domain service provided by [nip.io](https://nip.io), which resolves domain names containing IP addresses to their corresponding IP addresses.
+
+### Q2: Why must this domain be used instead of a local address?
+
+A: Module managers typically require HTTPS access to the Web UI and cannot directly use local addresses like `127.0.0.1` or `localhost`. This solution circumvents that restriction.
+
+**Note**: If you absolutely require a local address (e.g., `localhost`), you must: 1. Set up your own server environment 2. Add the certificate to both your user certificates and the browser's built-in certificate store (required by some browsers, e.g., Firefox). The module's included certificate is already signed for `localhost` and can be used directly.
+
+### Q3: How do I configure a custom address?
+
+Follow these steps:
+
+1. Point the custom domain to your local address
+2. Generate and configure an SSL certificate for that domain
+3. Replace the certificate file within the module
+
+Reference resources: [One](https://blog.csdn.net/xiejianweifdd/article/details/132520188) | [Two](https://www.gworg.com/ssl/832.html)
+
+### Q4: What should I do if I cannot connect to aria2?
+
+Please troubleshoot in sequence:
+
+1. Verify whether the certificate has expired
+2. Examine the log files within the module directory
+3. Validate the syntax of the aria2 configuration file
+4. Confirm the certificate configuration is correct
+5. Android 15+ users should check system certificate compatibility
+6. Ensure no proxy connection is enabled
+7. Android 14+ users may encounter conflicts if other certificate modules are installed
+
+### Q5: How to access the Web UI?
+
+- **Recommended method**: Access via the module manager's Web UI functionality
+- **Alternative approach**: Use plugins supporting Web UI access for modules
+
+![Module Manager Interface Example](jpg/cn.jpg)
+
+## 📁 Project Composition
+
+This module integrates the following open-source projects:
+
+- **[aria2](https://github.com/aria2/aria2)**
+- **[AriaNg](https://github.com/mayswind/AriaNg)**
+
+> Copyright for the above components remains with their respective original authors. This module serves solely as an integration package.
+
 
 ———————————
- 
-由中文版使用deepl翻译而来，可能意思有误
 
 Translated from the Chinese version using deepl, the meaning may be wrong
