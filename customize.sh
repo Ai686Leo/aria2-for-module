@@ -16,7 +16,6 @@ volume_key_selector() {
 
     while [ $(( $(date +%s) - start_time )) -lt $timeout ]; do
         # 通过 getevent 监听按键，并识别具体按键
-        # 注意：不同设备的事件码可能不同，以下 VOLUMEUP/VOLUMEDOWN 是常见值
         local event_output=$(timeout 0.1 getevent -lc 1 2>/dev/null)
         
         if echo "$event_output" | grep -q -E "KEY_VOLUMEUP"; then
@@ -41,6 +40,7 @@ volume_key_selector() {
             ;;
         *)
             echo "- 超时未选择，正在设置Aria2开机自启动"
+            return 0
             ;;
     esac
 }
@@ -57,4 +57,4 @@ else
     echo "已设置Aria2开机不自启" > "$FILE"
     echo "模块安装已完成"
 fi
-
+EOF
