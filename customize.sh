@@ -38,7 +38,7 @@ else
     # 函数返回 1 (Vol+) -> 进入 else -> 禁用自启
     ui_print "- 检测到 [音量+]"
     ui_print "- 正在设置：Aria2 开机不自启"
-    > ${0%/*}/noaria2
+    > ./noaria2
 fi
 
 ui_print "- 模块配置已完成"
