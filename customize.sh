@@ -1,59 +1,50 @@
 #!/system/bin/sh
 
 # 音量键选择函数
-# 返回值: 1 表示按下了 [音量+] (执行操作)
-#         0 表示按下了 [音量-] 或超时无操作 (不执行操作)
 volume_key_selector() {
-    # 等待时间 (秒)
+    # 打印提示信息
+    ui_print "- 等待按键选择..."
+    ui_print "- [音量+]：设置 Aria2 开机不自启"
+    ui_print "- [音量-] 或 [不操作]：设置 Aria2 开机自启动"
+    ui_print "- 请选择..."
+
+    # 设置超时时间
     local timeout=10
     local start_time=$(date +%s)
-    local key_detected=""
-
-    echo "- 等待按键选择 (${timeout}秒)..."
-    echo "- [音量+]：设置Aria2开机不自启"
-    echo "- [音量-] 或 [不操作]：设置Aria2开机自启动"
-    echo "- 请选择..."
-
+    
     while [ $(( $(date +%s) - start_time )) -lt $timeout ]; do
-        # 通过 getevent 监听按键，并识别具体按键
-        local event_output=$(timeout 0.1 getevent -lc 1 2>/dev/null)
+        # 监听输入，兼容性写法
+        local event_output=$(timeout 0.1 getevent -lc 1 2>&1)
         
-        if echo "$event_output" | grep -q -E "KEY_VOLUMEUP"; then
-            key_detected="VOLUMEUP"
-            break
-        elif echo "$event_output" | grep -q -E "KEY_VOLUMEDOWN"; then
-            key_detected="VOLUMEDOWN"
-            break
+        if echo "$event_output" | grep -q "KEY_VOLUMEUP"; then
+            return 1
+        elif echo "$event_output" | grep -q "KEY_VOLUMEDOWN"; then
+            return 0
         fi
-        
-        sleep 0.05
     done
 
-    case "$key_detected" in
-        "VOLUMEUP")
-            echo "- 检测到 [音量+]，正在设置Aria2开机不自启"
-            return 1
-            ;;
-        "VOLUMEDOWN")
-            echo "- 检测到 [音量-]，正在设置Aria2开机自启动"
-            return 0
-            ;;
-        *)
-            echo "- 超时未选择，正在设置Aria2开机自启动"
-            return 0
-            ;;
-    esac
+    # 超时默认返回 0
+    ui_print "- 超时未选择，默认执行：开机自启动"
+    return 0
 }
 
 # =============================================
+# 定义标记文件路径
 FILE="/data/adb/modules/aria2-Android/noaria2"
-# 调用音量键选择器
+
+# 确保父目录存在（防止报错）
+mkdir -p "$(dirname "$FILE")"
+
+# 调用函数
 if volume_key_selector; then
-    # 返回值为 0: 用户取消或超时
+    ui_print "- 检测到 [音量-] 或超时"
+    ui_print "- 正在设置：Aria2 开机自启动"
     rm -f "$FILE"
-    echo "模块安装已完成"
 else
-    # 返回值为 1: 用户确认执行
-    echo "已设置Aria2开机不自启" > "$FILE"
-    echo "模块安装已完成"
+    # 函数返回 1 (Vol+) -> 进入 else -> 禁用自启
+    ui_print "- 检测到 [音量+]"
+    ui_print "- 正在设置：Aria2 开机不自启"
+    echo "1" > "$FILE"
 fi
+
+ui_print "- 模块配置已完成"
