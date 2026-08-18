@@ -1,5 +1,27 @@
 #!/system/bin/sh
 
+
+# 配置文件夹检测与复制
+
+CONF="/data/adb/modules/aria2-Android/conf"
+
+# 2. 获取当前脚本所在的文件夹路径
+SCRIPT_DIR="${0%/*}"
+
+# 3. 检测并执行复制
+if [ -d "$CONF" ]; then
+    ui_print "- 检测到配置文件夹：$CONF"
+    ui_print "- 正在复制配置到模块更新目录..."
+    
+    cp -rf "$CONF" "/data/adb/modules_update/aria2-Android/"
+
+else
+    ui_print "- 未检测到配置文件夹，第一次安装？欢迎使用"
+fi
+
+# =============================================
+
+
 # 音量键选择函数
 volume_key_selector() {
     # 打印提示信息
